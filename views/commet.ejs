@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><title>Admin</title><style>body { font-family: sans-serif; margin: 2em; }</style></head>
+<body>
+    <h1>Painel de Admin</h1>
+    <h3>Ferramenta de Diagnóstico de Rede (Vulnerável a Command Injection)</h3>
+    <form action="/admin/ping" method="POST">
+        <input type="text" name="host" placeholder="Endereço de IP ou Host">
+        <button type="submit">Pingar</button>
+    </form>
+</body>
+</html>

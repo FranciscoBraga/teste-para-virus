@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head><title>Perfil</title><style>body { font-family: sans-serif; margin: 2em; }</style></head>
+<body>
+    <h1>Perfil de <%= profile.username %></h1>
+    <p>Email: <%= profile.email %></p>
+
+    <% if (currentUser.id === profile.id) { %>
+    <hr>
+    <h3>Alterar Email (Vulnerável a CSRF)</h3>
+    <form action="/change-email" method="POST">
+        <input type="email" name="new_email" placeholder="Novo email">
+        <button type="submit">Alterar</button>
+    </form>
+
+    <h3>Enviar foto de perfil (Vulnerável a Upload de Arquivos)</h3>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="profile_pic">
+        <button type="submit">Enviar</button>
+    </form>
+    <% } %>
+
+    <br><a href="/">Página Inicial</a>
+</body>
+</html>

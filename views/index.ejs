@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>VulnerableClass</title>
+    <style>body { font-family: sans-serif; margin: 2em; } .comment { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }</style>
+</head>
+<body>
+    <h1>Bem-vindo ao VulnerableClass!</h1>
+    <a href="/login">Fazer Login</a>
+
+    <h2>Comentários</h2>
+    <% comments.forEach(comment => { %>
+        <div class="comment">
+            <strong><%- comment.author %>:</strong>
+            <%- comment.content %>
+        </div>
+    <% }) %>
+    <form action="/comment" method="POST">
+        <h3>Deixe um comentário</h3>
+        <input type="text" name="author" placeholder="Seu nome (opcional)"><br>
+        <textarea name="content" placeholder="Seu comentário" required></textarea><br>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <hr>
+    <h2>Busca de Usuários</h2>
+    <form action="/search" method="GET">
+        <input type="text" name="term" placeholder="Nome de usuário">
+        <button type="submit">Buscar</button>
+    </form>
+    <% if (searchResults) { %>
+        <h3>Resultados da busca:</h3>
+        <ul>
+        <% searchResults.forEach(user => { %>
+            <li>ID: <%= user.id %>, Usuário: <%= user.username %></li>
+        <% }) %>
+        </ul>
+    <% } %>
+</body>
+</html>
